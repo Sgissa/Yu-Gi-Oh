@@ -26,7 +26,7 @@ export default function CardImage({src}){
             CardImages.id ?
             //then do this; true
             <>
-            <Image src={src}></Image>
+            <Image src={src} alt='Yugioh card'></Image>
             </>
             //else do this; false
             : <>
@@ -36,7 +36,7 @@ export default function CardImage({src}){
         <Grid.Column>
             
                 <Popup
-                trigger={<Image src={src} />}
+                trigger={<Image src={src} alt='Yugioh card' />}
                 on='click'
                 content={<Button color='green' icon='add' content='Add Card' />}
                 />                   

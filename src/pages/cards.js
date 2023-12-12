@@ -34,7 +34,7 @@ export default function Cards() {
             //then do this; true
             <>
              <Popup
-                trigger={<Image src={CardImages.card_images[0].image_url}></Image>}
+                trigger={<Image src={CardImages.card_images[0].image_url} alt='Yugioh card'></Image>}
                 on='click'
                 content={<Button color='green' icon='add' content='Add Card' />}
                 />       
