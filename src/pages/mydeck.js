@@ -1,19 +1,28 @@
-import React from "react";
-import useAppState from "@/useHooks/useAppState";
-import { Grid, Button, Header  } from "semantic-ui-react";
-import Head from "next/head";
+import { useState, useEffect } from "react";
+import { Grid, Image } from "semantic-ui-react";
 
-export default function DeckName(){
-    const appState = useAppState();
+export default function DeckName() {
+  const [deckItems, setDeckItems] = useState([]);
 
-    console.log(appState)
-    return(
-        <>
-        <Grid columns={1}>
-        <Grid.Column>
-            <Header as='h1'>{appState.user}'s deck</Header>
-        </Grid.Column>
+  useEffect(() => {
+    const data = localStorage.getItem("deckItems")
+      ? JSON.parse(localStorage.getItem("deckItems"))
+      : [];
+    setDeckItems(data);
+  }, []);
+  return (
+    <div>
+      {deckItems.length ? (
+        <Grid>
+          {deckItems.map((item, index) => (
+            <Grid.Column key={index} computer={4} tablet={8} mobile={16}>
+              <Image src={item.url} />
+            </Grid.Column>
+          ))}
         </Grid>
-        </>
-    )
+      ) : (
+        <h1>No items in the Deck</h1>
+      )}
+    </div>
+  );
 }
